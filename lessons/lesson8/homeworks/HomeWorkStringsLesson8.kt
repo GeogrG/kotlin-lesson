@@ -4,6 +4,8 @@ fun main()
     extractDate("2021-12-01 09:48:23")
     hideCardNum("4539 1488 0343 6467")
     replaceAtAndDot("username@example.com")
+    fileName("C:/Пользователи/Документы/report.txt")
+    encoding("Котлин лучший язык программирования")
 }
 
 fun ifContainsReplace(str: String)
@@ -49,4 +51,21 @@ fun replaceAtAndDot(str: String)
     {
         res.replace(".", " [dot] ")
     }
+}
+
+fun fileName(str: String)
+{
+    var res: String = str.substringAfterLast("/")
+    println(res)
+}
+
+fun encoding(str: String)
+{
+    val temp = str.split(" ")
+    var res: String = ""
+    for ( s in temp)
+    {
+        res += s[0].toString()
+    }
+    println(res.uppercase())
 }
