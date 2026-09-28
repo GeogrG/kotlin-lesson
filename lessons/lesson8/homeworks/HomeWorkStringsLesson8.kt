@@ -6,6 +6,9 @@ fun main()
     replaceAtAndDot("username@example.com")
     fileName("C:/Пользователи/Документы/report.txt")
     encoding("Котлин лучший язык программирования")
+    allWordsCapital("А я сажаю алюминиевые огурцы на брезентовом поле")
+    println(encrypt("Kotlin"))
+    println(decrypt(encrypt("Kotlin")))
 }
 
 fun ifContainsReplace(str: String)
@@ -68,4 +71,48 @@ fun encoding(str: String)
         res += s[0].toString()
     }
     println(res.uppercase())
+}
+
+fun allWordsCapital(str: String)
+{
+    val temp = str.split(" ")
+    var res: String = ""
+    for(s in temp)
+    {
+        res += s[0].toString().uppercase()
+        res += s.substring(1, s.length)
+        res+=" "
+    }
+    println(res)
+}
+
+fun encrypt(str: String) :String
+{
+    var s = str
+    if(str.length %2 == 1)
+        s += " "
+    
+    var chars = s.toCharArray()
+    for(i in 0..<str.length step 2)
+    {
+        val temp = chars[i + 1]
+        chars[i + 1] = chars[i]
+        chars[i] = temp
+    }
+    return String(chars)
+}
+
+fun decrypt(str: String) :String
+{
+    val s = str
+    var chars = s.toCharArray()
+
+    for(i in 0..<str.length step 2)
+    {
+        var temp = chars[i + 1]
+        chars[i + 1] = chars[i]
+        chars[i] = temp
+    }
+
+    return String(chars)
 }
